@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+{%load static%}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'doctor.css' %}">
+    <title>Doctor's Profile</title>
+
+</head>
+<style>
+    .logo img{
+    margin-top: -24.4%;
+    width: 180px;
+    height:150px;
+    margin-left: 86.5%;
+    position: fixed;
+
+}
+   
+.back-button {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    text-decoration: none;
+    background-color: blue;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    color: white;
+}
+
+.back-button:hover {
+    background-color: red;
+}
+fieldset{
+    border: 2px solid rgb(56, 110, 246);
+}
+.profile-info{
+    border: 2px solid rgb(56, 110, 246);
+}
+
+
+
+</style>
+<body >
+    
+    <a href="{% url 'userpage' %}" class="back-button">Back</a>
+     
+  
+    <div class="logo">
+        <img src="{% static 'images/logo.png' %}" alt="Logo">
+    </div>
+
+        <div class="image">
+            <img src="{% static 'images/doc1.png' %}" alt="logo"  />
+            </div>
+        
+            
+
+    <div class="profile-container" >
+        <div class="profile-info">
+            <h1>Dr. Coleen V. Lee, DMD</h1>
+            <p>Specialty: Oral Surgeon  </p>
+
+        
+            <fieldset >
+                <legend>About Dr. Lee</legend>
+                <p>Dr. Lee majored in Dental Surgery in CSIMU University. She has completed specialisation course in Prosthodontics, Endodontics and Oral Surgery.</p>   </fieldset>
+            
+
+            <fieldset>
+                <legend>Contact Information</legend>
+                <p>Email: coleen.lee@gmail.com</p>
+                <p>Phone: 0906 396 4305</p>
+                <p>Address:  Unit 221 Coco Malls, cors. Osmena Blvd.and Ma. Cristina St. Cebu City</p>
+            </fieldset>
+       
+            <fieldset>
+                <legend>Experience</legend>
+                <p>Dental Surgeon - City Hospital (7 Years)</p>
+                <p>Associate Dentist for 6 years</p>
+            </fieldset>
+        </div>
+    </div>
+    
+    <div class="profile-container1">
+        <div class="profile-info">
+            <h1>Dr. Arleen Lim-Lee, DMD</h1>
+            <p>Specialty: General Dentistry</p>
+
+            <fieldset>
+                <legend>About Dr.Lim-Lee </legend>
+                <p> Dr.  Lim-Lee completed her B.D.S degree in University. She has done certified course in Orthodontics specializing in the field of Endodontics, Extractions, Prosthodontics. </p>
+            </fieldset>
+
+            <fieldset>
+                <legend>Contact Information</legend>
+                <p>Email: arleenlim.lee@gmail.com</p>
+                <p>Phone:0906 396 4305</p>
+                <p>Address: Unit 221 Coco Malls, cors. Osmena Blvd.and Ma. Cristina St. Cebu City</p>
+            </fieldset>
+
+            <fieldset>
+                <legend>Experience</legend>
+                <p>General Dentistry - City Hospital (10 Years)</p>
+                <p>General Dentis - ABC Corporation (5 Years)</p>
+            </fieldset>
+        </div>
+    </div>
+    <div class="image1">
+        <img src="{% static 'images/doc.png' %}" alt="logo"  />
+        </div>
+
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width"= device-width, initial-scale="1.0">
+    <link rel="stylesheet" href="{% static 'index.css' %}">
+    <title>Welcome!</title>
+</head>
+<style>
+    .logo  img {
+    position: fixed;
+    top: 5px;
+    left:1360px;
+    z-index: 4;
+    height: 150px;
+    width: 180px;
+    
+}
+.btns {
+    position: absolute;
+    bottom: 280px;
+    left: 45%;
+    z-index: 5;
+    top: 50%;
+}
+
+.btns button {
+    font-size: 20px;
+    background-color: black;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btns button:hover {
+    background-color: #0056b3;
+}
+</style>
+<body>
+    <div class="container">
+        <div class="logo">
+            <img src="{% static 'images/logo.png' %}" alt="Logo">
+        </div>
+        <div class="navbar">
+            <a href="{% url 'register_user' %}" id="registerButton">Register</a>
+            <a href="{% url 'loginadmin' %}" id="loginButton">Login</a>
+        </div>
+        <div class="content">
+            <p>"Your smile is precious <br> when your dentally conscious."</p>
+        </div>
+        <div class="btns">
+          <a href="{% url 'team' %}"><button>Meet Us</button></a>
+        </div>
+        <div class="frame frame1">
+            <img src="{% static 'images/frame.jpg' %}" alt="Frame Picture">
+        </div>
+        <div class="frame frame2">
+            <img src="{% static 'images/frame2.jpg' %}" alt="Frame Picture">
+        </div>
+    </div>
+ 
+</body>
+</html>

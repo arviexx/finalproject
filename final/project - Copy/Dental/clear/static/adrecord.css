@@ -1,0 +1,110 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    background-image: url('images/6.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+.visible-text {
+    color: red;
+    visibility: visible;
+}
+
+.hidden-text {
+    visibility: hidden;
+}
+.logo img{
+    margin-top: -2%;
+    width: 180px;
+    height:160px;
+    margin-left: 87%;
+    position: fixed;
+}
+.image img{
+    width: 26%;
+    height: 650px ;
+    margin-top: 5%;
+    margin-left: 10%;
+    position: fixed;
+    z-index: 1;
+}
+
+h2, h3, h4 {
+    color: #007BFF;
+    margin-top: 1%;
+    margin-bottom: -2%;
+}
+strong {
+    color: #101316;
+}
+ul {
+    list-style-type: none;
+    padding: -15px;
+    margin-bottom: 20px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 12px;
+}
+
+li {
+    border: 3px solid #041bcff9;
+    border-radius: 5px;
+    background-color: #ffffff8a;
+    margin-bottom: 4px;
+    padding: 15px;
+    max-width: 500px;
+    margin-left: 37%;
+ 
+}
+
+a {
+    color: #007BFF;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+.approve-button {
+background-color: #2871d7; 
+color: #fff;
+padding: 5px 10px;
+border: none;
+border-radius: 5px;
+cursor: pointer;
+margin-top: 4%;
+
+
+}
+
+.approve-button:hover {
+background-color: blue; 
+}
+
+
+.cancel-button {
+background-color: rgb(235, 84, 54);
+color: #fff;
+padding: 5px 10px;
+border: none;
+border-radius: 5px;
+cursor: pointer;
+margin-top: 2%;
+
+
+
+
+}
+
+.cancel-button:hover {
+background-color: red;                      
+}
+.cancel{
+    margin-top: -17.5%;
+    margin-left: 50%;
+}
+.buttons{
+    margin-left: 68%;
+    margin-top: -10%;
+}

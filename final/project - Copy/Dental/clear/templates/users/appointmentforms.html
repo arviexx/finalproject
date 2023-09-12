@@ -1,0 +1,152 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'appoint.css' %}">
+    <title>AppointmentForm</title>
+</head>
+<style>
+.logo img{
+    margin-top: -12.4%;
+    width: 180px;
+    height:150px;
+    margin-left: 88%;
+    position: fixed;
+
+}
+h1{
+  color: rgb(56, 86, 236);
+  background: linear-gradient(to right,rgba(255, 255, 255, 0.978), white);
+  margin-left: 29% ;
+  position: fixed;
+ width: 900px;
+ height:180px;
+ margin-top: -1.4%;
+
+}
+.image img{
+  width: 78%;
+  height: 75% ;
+  margin-top: 13%;
+  margin-left: -12%;
+  position: fixed;
+z-index: -5;
+  
+}
+.back-button {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    text-decoration: none;
+    background-color: blue;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    color: white;
+}
+
+.back-button:hover {
+    background-color: red;
+}
+
+</style>
+<body>
+    
+    <a href="{% url 'userpage' %}" class="back-button">Back</a>
+     
+    
+<div class="image">
+    <img src="{% static 'images/doc2.png' %}" alt="logo"  />
+    </div>
+
+    <h1><p style="margin-left: 20%;font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; font-size: 45px; position: fixed;"><br>Appointment Form</p></h1>
+
+<div class="title" style="margin-bottom: 11%; margin-left: 30%;">RECORDS</div>
+
+    <div class="logo">
+        <img src="{% static 'images/logo.png' %}" alt="Logo">
+    </div>
+
+    <div class="container">
+        <form method="post" on>
+            {% csrf_token %}
+
+            <label for="{{ form.full_name.id_for_label }}">Full Name:</label>
+            {{ form.full_name }}
+            {{ form.full_name.errors }}
+
+            <label for="{{ form.gender.id_for_label }}">Gender:</label>
+            {{ form.gender }}
+            {{ form.gender.errors }} 
+
+            <label for="{{ form.phone_number.id_for_label }}">Phone Number:</label>
+            {{ form.phone_number }}
+            {{ form.phone_number.errors }}
+
+            <label for="{{ form.email.id_for_label }}">Email:</label>
+            {{ form.email }}
+            {{ form.email.errors }}
+
+            <label for="{{ form.address.id_for_label }}">Address:</label>
+            {{ form.address }}
+            {{ form.address.errors }}
+
+            <label for="{{ form.appointment_date.id_for_label }}">Appointment Date:</label>
+            <input type="date" class="datepicker" id="{{ form.appointment_date.id_for_label }}" name="{{ form.appointment_date.name }}" value="{{ form.appointment_date.value }}">
+            {{ form.appointment_date.errors }}
+
+            <label for="{{ form.appointment_time.id_for_label }}">Appointment Time:</label>
+            <input type="time" class="timepicker" id="{{ form.appointment_time.id_for_label }}" name="{{ form.appointment_time.name }}" value="{{ form.appointment_time.value }}">
+            {{ form.appointment_time.errors }}
+
+            <label for="{{ form.doctor.id_for_label }}">Choosen Doctor:</label>
+            {{ form.doctor }}
+            {{ form.doctor.errors }}
+
+            <fieldset>
+                <h4>Services</h4>
+                <p>Teeth Extraction:</p><h6>{{ form.Teeth_Extractions }}</h6>
+                <p>Dental Cleaning:</p><h6>{{ form.Dental_Cleaning }}</h6>
+                <p>Dental Crown:</p><h6>{{ form.Dental_Crowns }}</h6>
+                <p>Teeth Whitening:</p><h6>{{ form.Teeth_Whitening }}</h6>
+                <p>Cosmetics Dentistry:</p><h6>{{ form.Cosmetics_Dentistry }}</h6>
+              </fieldset>
+
+            {{ form.approval }}
+            {{ form.approval.errors }}
+
+            <label for="{{ form.approval_message.id_for_label }}" id="approval_message_label"
+                   style="display: none;">Approval Message:</label>
+            {{ form.approval_message }}
+            {{ form.approval_message.errors }}
+
+            <input type="submit" value="Submit"  onclick="sendNotification()" >
+        </form>
+   </div>
+
+    <script>
+        $(document).ready(function () {
+            $('.datepicker').datepicker();
+            $('.timepicker').timepicker();
+        });
+
+        function sendNotification()  {
+            let badgeValue = localStorage.getItem('badgeValue') || 0;
+            badgeValue++;
+            localStorage.setItem('badgeValue', badgeValue);
+
+            const badgeEvent = new Event('badgeUpdated');
+            document.dispatchEvent(badgeEvent);
+        }
+        $(document).ready(function () {
+        $('.datepicker').datepicker();
+        $('.timepicker').timepicker();
+    });
+
+   
+    </script>
+</body>
+</html>

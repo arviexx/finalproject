@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'services.css' %}">
+    <title>Services</title>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">
+            <img src="{% static 'images/logo.png' %}" alt="Logo">
+        </div>
+        <div class="content-container">
+            <div class="content">
+                <div class="description">
+            <h1>Teeth Extractions</h1>
+            <p>Tooth extraction involves completely removing a tooth from the mouth.<br> People may require tooth extraction for many reasons, ranging from tooth decay to crowded teeth.<a href="#" class="read-more-button">Read More</a></p>
+             
+        </div>
+      
+        <div class="image">
+            <img src="{% static 'images/picture1.jpg' %}" alt="Service Image">
+            
+        </div>
+        
+       </div>
+
+       <div class="content">
+        <div class="description">
+            <h1>Teeth Whitening</h1>
+            <p>Teeth whitening refers to a variety of processes that aim to make someone’s natural teeth appear brighter and whiter.<br> Teeth whitening methods include sanding down stains, bleaching, ultraviolet (UV) light therapy, and more. <a href="#" class="read-more-button">Read More</a></p>
+        </div>
+        <div class="image">
+            <img src="{% static 'images/picture2.jpg' %}" alt="Service Image">
+            
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="description">
+            <h1>Dental Crowns</h1>
+            <p>A dental crown is a tooth-shaped cap that restores a decayed, broken, weak or worn-down tooth.<br> Dentists also use crowns to cover dental implants and root canal-treated teeth. Made from a variety of materials, including metal, resin and porcelain, crowns last between five and 15 years with proper care. <a href="#" class="read-more-button">Read More</a></p>
+        </div>
+        <div class="image">
+            <img src="{% static 'images/picture3.jpg' %}" alt="Service Image">
+            
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="description">
+    <h1>Dental Clinings</h1>
+    <p>A deep teeth cleaning can remove a buildup of plaque and tartar on your teeth, reducing gum inflammation and improving gum health.<br>Plaque is a sticky film that forms on teeth. It contains bacteria and develops when food particles mix with saliva. You can remove plaque, which collects on teeth daily, by brushing your teeth. <a href="#" class="read-more-button">Read More</a></p>
+  </div>
+  <div class="image">
+    <img src="{% static 'images/picture4.jpg' %}" alt="Service Image">
+    
+</div>
+</div>
+
+<div class="content">
+    <div class="description">
+<h1>Cosmetic Dentistry</h1>
+<p>Cosmetic dentistry, or esthetic dentistry, focuses on improving the appearance of your smile. Cosmetic dentistry can improve your smile by: <br>Lightening or whitening teeth<br>Reshaping teeth<br>Straightening teeth<br>Repairing damaged teeth.<a href="#" class="read-more-button">Read More</a></p>
+</div>
+<div class="image">
+<img src="{% static 'images/picture5.jpg.crdownload' %}" alt="Service Image">
+
+</div>
+</div>
+  <div class="buttons">
+    <a href="{% url 'userpage' %}" class="back-button">Back</a>
+
+</div>
+
+    </div>    
+    </div>
+</body>
+</html>

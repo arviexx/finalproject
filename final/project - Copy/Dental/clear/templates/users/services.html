@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+{%load static%}
+<html>
+   <head>
+
+    <title>Services</title>
+      <link rel="stylesheet" href="{% static 'services.css' %}">
+     
+   </head>
+   <style>
+     .logo img{
+    margin-top: -24%;
+    width: 188px;
+    height:160px;
+    margin-left: 87%;
+    position: fixed;
+}
+
+.cards{
+    display: grid;
+    gap: 30px;
+    max-width: 800px;
+    margin-left:30px;
+    margin-right:auto;
+    grid-template-columns:1fr 1fr 1fr; 
+    align-items:center;
+    width: 170px;
+    border-radius: 15px;
+ }
+ .card{
+    background-color: rgba(65, 168, 227, 0.066);
+    padding: 35px;
+    border-radius: 12px;
+    transition: height 0.3s ease-in-out;
+    margin-top: 100px;
+    border: 2px solid blue;
+}
+.back-button {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    text-decoration: none;
+    background-color: blue;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    color: white;
+}
+
+.back-button:hover {
+    background-color: red;
+}
+
+
+   </style>
+   <body>
+    <div class="logo">
+        <img src="{% static 'images/logo.png' %}" alt="Logo">
+    </div>
+    <a href="{% url 'userpage' %}" class="back-button">Back</a>
+       
+
+<div class="service">
+    <h1>Our Services</h1>
+
+</div>
+
+<div class="cards">
+    <div class="card" >
+        <div class="img-holder1">
+            <img src="{% static 'images/picture1.jpg' %}" width="190px" height="170px" style=" border: 2px solid blue;  border-radius: 60%;"/>
+        </div>
+        <div class="card-content">
+            <h2>Teeth Extractions</h2>
+            <p> We are here to help improve your oral health, alleviate painful 
+                toothaches, and restore your smile. We are proud to offer high-quality
+                 extraction treatments which made you simple and
+                  comfortable at AllClear Dental Clinic.</p>
+            </p><br>
+                 <a href="{% url 'appointmentforms' %}">Book Now</a> 
+        </div>
+    </div>
+</div>
+<div class="cards">
+    <div class="card">
+        <div class="img-holder2" >
+            <img src="{% static 'images/picture2.jpg' %}" width="190px" height="175px" style=" border: 2px solid blue;  border-radius: 60%;"/>
+        </div>
+        <div class="card-content">
+            <h2>Teeth Whitening</h2>
+            <p>AllClear Dental Clinic can help you get the beautiful smile you’ve
+                 always wanted. We offer professional teeth whitening 
+                 services that are safe, effective, and affordable.</p>
+            </p><br>
+                 <a href="{% url 'appointmentforms' %}">Book Now</a> 
+        </div>
+    </div>
+</div>
+
+<div class="cards">
+    <div class="card">
+        <div class="img-holder3" >
+            <img src="{% static 'images/picture3.jpg' %}" width="190px" height="170px" style=" border: 2px solid blue;  border-radius: 60%;"/>
+        </div>
+        <div class="card-content">
+            <h2>Dental Crowns</h2>
+            <p> Our AllClear dentists offer high quality and 
+                affordable dental crowns to help restore the 
+                beauty and health to your smile.
+                </p>
+            </p><br>
+                 <a href="{% url 'appointmentforms' %}">Book Now</a> 
+        </div>
+    </div>
+</div>
+
+
+<div class="cards">
+    <div class="card">
+        <div class="img-holder4">
+            <img src="{% static 'images/picture4.jpg' %}" width="190px" height="170px" style=" border: 2px solid blue;  border-radius: 60%;"/>
+        </div>
+        <div class="card-content">
+            <h2>Dental Cleanings</h2>
+            <p> At AllClear Dental Clinic, we offer deep cleanings 
+                that can help get your oral health back on track.  </p>
+            </p><br>
+                 <a href="{% url 'appointmentforms' %}">Book Now</a> 
+        </div>
+    </div>
+</div>
+
+
+
+<div class="cards">
+    <div class="card">
+        <div class="img-holder5">
+            <img src="{% static 'images/picture5.jpg' %}" width="190px" height="170px" style=" border: 2px solid blue;  border-radius: 60%;"/>
+        </div>
+        <div class="card-content">
+            <h2>Cosmetics Dentistry</h2>
+            <p> If you are feeling self-conscious about damaged or 
+                stained teeth, we offer a wide range of cosmetic dentistry services 
+                that can help improve the appearance of your smile
+                 and enhance your oral health. </p>
+            </p><br>
+                 <a href="{% url 'appointmentforms' %}">Book Now </a> 
+        </div>
+    </div>
+</div>
+
+   </body>
+   </html>

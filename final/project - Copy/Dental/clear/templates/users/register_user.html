@@ -1,0 +1,301 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'register.css' %}">
+
+    <title>Registration Form</title>
+</head>
+<style>
+  .wrapper {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 30px;
+  margin-top: 50px;
+ 
+
+}
+form{
+    margin-top: 3%;
+    margin-left: -5%;
+    margin-right: 20%;
+    width: 100%;
+
+}
+
+h2 {
+  text-align: center;
+  font-style: italic;
+
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.form-control {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+
+}
+
+.input-box {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.input-box input[type="submit"] {
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.input-box input[type="submit"]:hover {
+    background-color: #0040ff; 
+    color: #fff; 
+}
+
+
+.text {
+    text-align: center;
+    margin-top: 10px;
+    font-size: small;
+}
+
+.text a {
+    text-decoration: none;
+    color: #007BFF;
+
+}
+
+.custom-warning {
+    background-color: #f8d7da; 
+    border: 1px solid #f5c6cb; 
+    color: #721c24;
+    padding: 10px;
+    border-radius: 3px;
+    display: none;
+}
+
+.logo  img {
+    position: fixed;
+    top: 5px;
+    left:1360px;
+    z-index: 4;
+    height: 150px;
+    width: 180px;
+    
+}
+.input-box {
+    position: relative;
+    margin-top: -1%;
+  
+}
+
+.input-box .eye-icon {
+    position: absolute;
+    right: -5px;
+    top: 40%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    font-size: 18px;
+    color: #333;
+    z-index: 5;
+}
+.left-frame img {
+    max-width: 50%;
+    border-radius: 20px;
+    margin-top: 4%;
+    margin-left: 24%;
+   
+}
+.password-container {
+            position: relative;
+            margin-bottom: 7px;
+        }
+
+        .toggle-password {
+            position: absolute;
+            right: -15px;
+            top: 66%;
+            transform: translateY(-50%);
+            cursor: pointer;
+        }
+</style>
+<body>
+    <div class="container">
+        <div class="logo">
+            <img src="{% static 'images/logo.png' %}" alt="Logo">
+        </div>
+        <div class="left-frame">
+            <img src="{% static 'images/frame4.jpg' %}" alt="Frame Picture">
+        </div>
+        <a href="{% url 'index' %}" class="back-button">Back</a>
+
+        <form action="{% url 'register_user' %}" method="post" autocomplete="off">
+            {% csrf_token %}
+            <div class="mb-3">
+                <!-- Other form fields --> <div class="mb-3">
+                  <label for="Username" class="form-label">Username</label>
+                  <input type="text" class="form-control" placeholder="Username" id="Username" name="username" required>
+  
+          
+                  <label for="Email" class="form-label">Email</label>
+                  <input type="email" class="form-control" placeholder="Email" id="Email"  name="email" required>
+                  
+                  <div class="password-container">
+                    <label for="Password" class="form-label">Password</label>
+                    <input type="password" class="form-control" placeholder="Password" name="password1" id="Password" required>
+                    <span class="toggle-password" onclick="togglePasswordVisibility('Password')">👁️</span>
+                  </div>
+                  
+                  <div class="password-container">
+                    <label for="Confirm_Password" class="form-label">Confirm Password</label>
+                    <input type="password" class="form-control" placeholder="Confirm Password" id="password" name="password2" required>
+                    <span class="toggle-password" onclick="togglePasswordVisibility('password')">👁️</span>
+                  </div>
+                </div>
+            </div>
+            <div id="passwordError" class="alert alert-danger custom-warning" style="display: none;"></div>
+        
+            {% if messages %}
+                {% for message in messages %}
+                    <div>{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+            
+            <div class="input-box button">
+                <input type="submit" value="Register">
+            </div>
+        
+            <div class="text">
+                <h3>Already have an account? <a href="{% url 'loginuser' %}">Login here</a></h3>
+            </div>
+        </form>
+        
+        
+        
+        <script>
+            function togglePasswordVisibility(inputId) {
+      var passwordInput = document.getElementById(inputId);
+      passwordInput.type = (passwordInput.type === 'password') ? 'text' : 'password';
+    }
+
+
+
+          document.addEventListener("DOMContentLoaded", function () {
+          const form = document.querySelector("form");
+          const usernameInput = document.querySelector("#Username");
+          const emailInput = document.querySelector("#Email");
+          const passwordInput = document.querySelector("#Password");
+          const confirmPasswordInput = document.querySelector("#password");
+  
+        form.addEventListener("submit", function (event) {
+          if (!validateUsername(usernameInput.value) || !validateEmail(emailInput.value) || !validatePassword(passwordInput.value, confirmPasswordInput.value)) {
+              event.preventDefault(); // Prevent form submission
+          }
+         });
+        });
+  
+      function validateUsername(username) {
+      // Username should contain at least one letter and one number
+      const usernameRegex = /^(?=.*[a-zA-Z])(?=.*[0-9])[a-zA-Z0-9]+$/;
+      if (!usernameRegex.test(username)) {
+          alert("Please enter a unique Username. It  should contain at least one letter and one number.");
+          return false;
+      }
+      return true;
+      }
+  
+      function validateEmail(email) {
+      // Email should have a valid format
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email)) {
+          alert("Please enter a valid email address.");
+          return false;
+      }
+      return true;
+      }
+      $('#Email').on('blur', function() {
+      const email = $(this).val();
+      $.ajax({
+          url: '/validate_email/',
+          data: {
+              'email': email
+          },
+          dataType: 'json',
+          success: function(data) {
+              if (data.is_taken) {
+                  alert('This email is already in use.');
+                  // You can handle the validation here (disable submit button, show an error message, etc.)
+              }
+          }
+      });
+  });
+  
+  
+    function validatePassword(password, confirmPassword) {
+      // Password should be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, one number, and one special character
+      const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+      if (password !== confirmPassword) {
+          alert("Passwords do not match. Please try again.");
+          return false;
+      } else if (!passwordRegex.test(password)) {
+          alert("Password should be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, one number, and one special character.");
+          return false;
+      }
+      return true;
+  }
+  $(document).ready(function() {
+      $('#Username').on('blur', function() {
+          const username = $(this).val();
+          $.ajax({
+              url: '/check_username/',
+              data: {
+                  'username': username
+              },
+              dataType: 'json',
+              success: function(data) {
+                  if (data.exists) {
+                      alert('Username already exists.');
+                      // You can handle the validation here (disable submit button, show an error message, etc.)
+                  }
+              }
+          });
+      });
+  
+      $('#Email').on('blur', function() {
+          const email = $(this).val();
+          $.ajax({
+              url: '/check_email/',
+              data: {
+                  'email': email
+              },
+              dataType: 'json',
+              success: function(data) {
+                  if (data.exists) {
+                      alert('Email already exists.');
+                      // You can handle the validation here (disable submit button, show an error message, etc.)
+                  }
+              }
+          });
+      });
+  });
+  
+  
+        </script>
+  
+  
+</body>
+</html>
+

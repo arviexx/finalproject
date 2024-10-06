@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'loginuser.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Login Form</title>
+</head>
+<style>
+     .logo  img {
+    position: fixed;
+    top: 5px;
+    left:1360px;
+    z-index: 4;
+    height: 150px;
+    width: 180px;
+    
+}
+
+h1 {
+    font-size: 36px;
+    color: #333;
+  font-style: normal;
+}
+
+.login-form {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 40px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    width: 70%;
+    margin-right: 20%;
+    margin-top: 5%;
+    border: 2px solid blue;
+    
+}
+.input-box {
+    position: relative;
+    width:90%;
+   left: 15px;
+}
+
+.input-box .eye-icon {
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    font-size: 18px;
+    color: #333;
+ 
+
+}
+
+
+.left-frame img {
+    max-width: 60%;
+    border-radius: 20px;
+    margin-top: 8%;
+    margin-left: 25%;
+  
+}
+
+.password-container {
+    position: relative;
+}
+
+.toggle-password {
+    position: absolute;
+    right: 22px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+.alert {
+      color: #721c24;
+      background-color: #f8d7da;
+      border-color: #f5c6cb;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid transparent;
+      border-radius: 4px;
+    }
+
+
+</style>
+
+
+<body>
+    <div class="container">
+        <div class="logo">
+            <img src="{% static 'images/logo.png' %}" alt="Logo">
+        </div>
+        <a href="{% url 'register_user' %}" class="back-button">Back</a>
+        <div class="left-frame">
+            <img src="{% static 'images/frame3.jpg' %}" alt="Image">
+        </div>
+        <div class="login-form">
+            <h1>Login</h1>
+        
+            <form  method="post">
+                {% csrf_token %} 
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+    
+                <label for="password">Password:</label>
+                <div class="password-container">
+                    <input type="password" id="password" name="password" required>
+                    <span class="toggle-password" onclick="togglePassword()">👁️</span>
+                </div>
+
+                <button type="submit">Login</button>
+            </form>
+
+            {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+        </div>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+        const urlParams = new URLSearchParams(window.location.search);
+        const username = urlParams.get('username');
+        const password = urlParams.get('password');
+
+    if (username && password) {
+        document.querySelector("#usernameField").value = username;
+        document.querySelector("#passwordField").value = password;
+    }
+    });
+
+ document.addEventListener("DOMContentLoaded", function () {
+        const passwordInput = document.getElementById("password");
+        const togglePasswordButton = document.getElementById("toggle-password");
+
+        togglePasswordButton.addEventListener("click", function () {
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+                togglePasswordButton.classList.remove("fa-eye");
+                togglePasswordButton.classList.add("fa-eye-slash");
+            } else {
+                passwordInput.type = "password";
+                togglePasswordButton.classList.remove("fa-eye-slash");
+                togglePasswordButton.classList.add("fa-eye");
+            }
+        });
+    });
+
+
+    function togglePassword() {
+        var passwordField = document.getElementById("password");
+        var toggleIcon = document.querySelector(".toggle-password");
+
+        if (passwordField.type === "password") {
+            passwordField.type = "text";
+            toggleIcon.textContent = "👁️";
+        } else {
+            passwordField.type = "password";
+            toggleIcon.textContent = "👁️";
+        }
+    }
+    </script>
+</body>
+</html>
+

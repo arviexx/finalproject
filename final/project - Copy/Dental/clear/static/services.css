@@ -1,0 +1,125 @@
+*{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+ body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-image: url('images/6.jpg');
+    font-family: 'Poppins', sans-serif;
+    padding: 20px;
+    background-size: cover;
+    background-attachment: fixed;
+ }
+
+.card .img-holder1 .img-holder2 .img-holder3 .img-holder4 .img-holder5{
+    width:150px;
+    height: 140px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    transition:transform 0.3s ease-in-out;
+  
+   
+}
+.card h2{
+    margin-bottom: 15px;
+}
+.card p{
+    opacity:0;
+    transition: opacity 0.s ease-in-out;
+    transition-delay: 0.1s;
+}
+.card a{
+    opacity:0;
+transition: opacity 0.s ease-in-out;
+transition-delay: 0.1s;
+display:inline-block;
+color: white ;
+text-decoration: none;
+padding:15px;
+border-radius: 25px;
+background-color: blue;
+}
+.card-content{
+    height:60px;
+    overflow: hidden;
+    transition: height 0.3s ease-in-out;
+ 
+}
+.card:hover .img-holder1 {
+    transform: scale(0.9);
+    margin-top: -120px;
+}
+.card:hover .img-holder2 {
+    transform: scale(0.9);
+    margin-top: -120px;
+}
+.card:hover .img-holder3 {
+    transform: scale(0.9);
+    margin-top: -120px;
+}
+.card:hover .img-holder4 {
+    transform: scale(0.9);
+    margin-top: -120px;
+}
+.card:hover .img-holder5 {
+    transform: scale(0.9);
+    margin-top: -120px;
+}
+
+
+.card:hover .card-content{
+    height: 340px;
+    overflow: visible;
+}
+
+.card:hover p, .card:hover a {
+    opacity: 1;
+}
+.service{
+    align-items: center;
+    margin-top: -39%;
+    font-size: 30px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+margin-left: 0%;
+position: fixed;
+color: black;
+
+}   
+.logo img {
+    position: fixed;
+    width: 140px;
+    float:left;
+  margin-left: 90%;
+
+    cursor: pointer;
+}
+
+.btn {
+    cursor: pointer;
+    border-radius: 5em;
+    color: white;
+    background: linear-gradient(to right, #0547cb, #1968f0);
+    border: 0;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    font-family: 'Ubuntu', sans-serif;
+    margin-right: -9%;
+    margin-top: -45%;
+    font-size: 17px;
+    box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
+}
+.btn a {
+    text-shadow: 0px 0px 5px rgba(117, 117, 117, 0.12);
+    color: white;
+    text-decoration: none;
+}
+.btn:hover {
+    background: black;
+}

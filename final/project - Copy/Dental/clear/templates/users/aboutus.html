@@ -1,0 +1,452 @@
+
+<!DOCTYPE html>
+<html>
+    {%load static%}
+    <head>
+        <link rel="stylesheet" href="{% static 'about.css' %}">
+    <title>About_And_Contact_Us</title>
+  
+</head>
+
+<body >
+    <div class="logo">
+        <img src="{% static 'images/logo.png' %}" alt="logo">
+        </div>
+      
+      <a href="{% url 'userpage' %}" class="back-button">Back</a>
+       
+
+
+   <div class="picture">
+    <img src="{% static 'images/frame2.jpg' %}" alt="Image">
+   </div>
+
+   <div class="text">
+    <h1>About Us</h1>
+    <div class="subtext">
+      <p>
+        Welcome to AllClear Dental Clinic, a dental clinic that you can trust, friendly and affordable dental care.
+         Our dental clinic are here to provide you with high quality services at a price that won't break the bank.
+        We know how important to patients for having access to reliable dental care, which why we strive to make our clinic as accessible
+      as possible. With flexible appointment times, you can rest assured knowing that your oral health needs are in good hands when you visiting us!
+      </p>
+
+    </div>
+   </div>
+   
+   <section id="contact">
+    
+   <div class="picture1">
+    <img src="{% static 'images/contact.png' %}" alt="Image">
+   </div>
+  
+    <h1 class="header">Contact Us</h1>
+    
+    <div class="container">
+
+      <form  method="post">
+         {% csrf_token %} 
+          <label for="name">Name:</label>
+          <input type="text" id="name" name="name" required>
+
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" required>
+
+          <label for="message">Message:</label>
+          <textarea id="message" name="message" rows="4" required></textarea>
+
+          <button type="submit">Submit</button>
+      </form> 
+      </div>
+
+        <div class="direct-contact-container">
+  
+          <ul class="contact-list">
+            <li class="list-item"><i class="fa fa-map-marker fa-2x"><span class="contact-text place">City, State</span></i></li>
+            
+            <li class="list-item"><i class="fa fa-phone fa-2x"><span class="contact-text phone"><a href="tel:1-212-555-5555" title="Give me a call">(212) 555-2368</a></span></i></li>
+            
+            <li class="list-item"><i class="fa fa-envelope fa-2x"><span class="contact-text gmail"><a href="mailto:vishnuisles45@gmail.com" title="Send me an email">allclear.dc@gmail.com</a></span></i></li>
+            
+          </ul>
+  
+          <hr>
+          <ul class="social-media-list">
+            <li><a href="https://web.facebook.com/?_rdc=1&_rdr"> <img src="{% static 'images/fb.png' %}" class="med"> </a>
+            </li>
+            <li><a href="https://www.instagram.com"><img src="{% static 'images/insta.png' %}" class="med1">
+              </a>
+            </li>
+            <li><a href="https://www.messenger.com/"> <img src="{% static 'images/messenger.png' %}" class="med2"></a>
+            </li>
+            <li><a href="https://twitter.com/" > <img src="{% static 'images/twitter.png' %}" class="med3" > 
+            </a>
+            </li>       
+          </ul>
+          <hr>
+  
+          <div class="copyright">&copy; 2023-2024 ALL OF THE RIGHTS RESERVED</div>
+  
+        </div>
+      
+    </div>
+    
+  </section>  
+    
+
+
+
+
+   <script>
+    document.querySelector('#contact-form').addEventListener('submit', (e) => {
+    e.preventDefault();
+    e.target.elements.name.value = '';
+    e.target.elements.email.value = '';
+    e.target.elements.message.value = '';
+  });
+
+   </script> 
+
+<style>
+  .back-button {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    text-decoration: none;
+    background-color: blue;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    color: white;
+}
+
+.back-button:hover {
+    background-color: red;
+}
+  .logo img{
+  margin-top: -2%;
+  width: 190px;
+  height:160px;
+  margin-left: 86%;
+  position: fixed;
+
+}
+ 
+ .picture img{
+  width: 35%;
+  height: 35%;
+  margin-left: 15%;
+  margin-top: 13%;
+  border-radius: 15px;
+  border: 3px solid #0617f8;
+ } 
+ .picture1 img{
+  width: 20%;
+  height: 350px;
+  margin-left: 67%;
+  margin-top: 19%;
+
+ } 
+
+.text{
+margin-left: 52%;
+margin-top: -24%;
+font-size: 170%;
+
+
+ }
+ .subtext{
+  text-align: left;
+  font-size: 17px;
+  width: 70%;
+  height: 30%;
+  font-size: 70%;
+  margin-top: -5%;
+
+ }
+
+.btn {
+  cursor: pointer;
+  border-radius: 5em;
+  color: white;
+  background: linear-gradient(to right, #0547cb, #1968f0);
+  border: 0;
+  padding-left: 40px;
+  padding-right: 40px;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  font-family: 'Ubuntu', sans-serif;
+  margin-left: 2%;
+  margin-top: 1%;
+  font-size: 17px;
+  box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
+  position: fixed;
+}
+.btn a {
+  text-shadow: 0px 0px 5px rgba(117, 117, 117, 0.12);
+  color: white;
+  text-decoration: none;
+}
+.btn:hover {
+  background: black;
+}
+
+
+.container {
+  width: 20%;
+  margin-bottom: 17%;
+  margin-top: -2%;
+  margin-left: 17%;
+  padding: 20px;
+  background-color: transparent;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  margin-bottom: 8px;
+}
+
+input, textarea {
+  padding: 10px;
+  margin-bottom: 16px;
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+  background-color: #ffffffaa;
+}
+
+button {
+  padding: 10px;
+  background-color: #265de9;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0400e3;
+}
+
+.direct-contact-container {
+max-width: 400px;
+margin-left: 40%;
+margin-top: -42%;
+margin-bottom: 10%;
+}
+.header{
+margin-top: -28%;
+font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+margin-left: 20%;
+font-size: 50px;
+}
+
+.contact-list {
+list-style-type: none;
+margin-left: -20px;
+padding-right: 20px;
+}
+
+.list-item {
+line-height: 4;
+color: black;
+}
+
+.contact-text {
+font: 300 18px 'Lato', sans-serif;
+letter-spacing: 1.9px;
+color: black;
+}
+
+.place {
+margin-left: 62px;
+}
+
+.phone {
+margin-left: 56px;
+}
+
+.gmail {
+margin-left: 53px;
+}
+
+.contact-text a {
+color: black;
+text-decoration: none;
+transition-duration: 0.2s;
+}
+
+.contact-text a:hover {
+color: #245ff2;
+text-decoration: none;
+}
+.social-media-list {
+position: r4lative;
+font-size: 22px;
+text-align: center;
+width: 100%;
+margin: 0 auto;
+padding: 0;
+}
+.med {
+height: 60px;
+width: 64.5px;
+margin-left: -3.5%;
+
+}
+
+.med1{
+  height: 60px;
+width: 61px;
+margin-left: -1%;
+
+
+}
+.med2{
+  height: 63px;
+width: 61px;
+margin-left: -1%;
+
+
+}
+.med3{
+  height: 63px;
+width: 61.5px;
+margin-left: -2%;
+}
+.social-media-list li a  {
+color: #fff;
+}
+
+.social-media-list li {
+position: relative; 
+display: inline-block;
+height: 60px;
+width: 60px;
+margin: 10px 3px;
+line-height: 60px;
+border-radius: 50%;
+color: #fff;
+background-color: rgb(27,27,27);
+cursor: pointer; 
+transition: all .2s ease-in-out;
+}
+
+.social-media-list li:after {
+content: '';
+position: absolute;
+top: -1px;
+left: -1px;
+width: 62px;
+height: 62px;
+line-height: 60px;
+border-radius: 50%;
+opacity: 0;
+box-shadow: 0 0 0 1px #1338ef;
+transition: all .2s ease-in-out;
+z-index: -5;
+}
+
+.social-media-list li:hover {
+background-color: #ffffff; 
+}
+
+.social-media-list li:hover:after {
+opacity: 1;  
+transform: scale(1.12);
+transition-timing-function: cubic-bezier(0.37,0.74,0.15,1.65);
+}
+
+.social-media-list li:hover a {
+color: #000;
+}
+.contact-icon{
+  width: 20px;
+}
+.copyright {
+font: 200 14px 'Oswald', sans-serif;
+color: #555;
+letter-spacing: 1px;
+text-align: center;
+}
+
+hr {
+border-color: rgba(255,255,255,.6);
+}
+
+@media screen and (max-width: 850px) {
+.contact-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+.direct-contact-container, .form-horizontal {
+  margin: 0 auto;
+}  
+
+.direct-contact-container {
+  margin-top: 60px;
+  max-width: 300px;
+}    
+.social-media-list li {
+  height: 60px;
+  width: 60px;
+  line-height: 60px;
+}
+.social-media-list li:after {
+  width: 60px;
+  height: 60px;
+  line-height: 60px;
+}
+}
+
+@media screen and (max-width: 569px) {
+
+.direct-contact-container, .form-wrapper {
+  float: none;
+  margin: 0 auto;
+}  
+.form-control, textarea {
+  
+  margin: 0 auto;
+}
+
+
+.name, .email, textarea {
+  width: 280px;
+} 
+
+.direct-contact-container {
+  margin-top: 60px;
+  max-width: 280px;
+}  
+.social-media-list {
+  left: 0;
+}
+.social-media-list li {
+  height: 55px;
+  width: 55px;
+  line-height: 55px;
+  font-size: 2rem;
+}
+.social-media-list li:after {
+  width: 55px;
+  height: 55px;
+  line-height: 55px;
+}
+
+}
+
+@media screen and (max-width: 410px) {
+.send-button {
+  width: 99%;
+}
+}
+</style>
+
+
+</body>
+</html>

@@ -1,0 +1,108 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    background-image: url('images/6.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+
+h1{
+    color: rgb(56, 86, 236);
+    background: linear-gradient(to right,white, white);
+    margin-left: 26% ;
+    position: fixed;
+   width: 900px;
+   height:180px;
+   margin-top: -1.4%;
+  
+  
+  }
+
+strong {
+    color: #343a40;
+}
+ul {
+    list-style-type: none;
+    padding: -9px;
+    margin-bottom: 20px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 12px;
+}
+
+li {
+    border: 3px solid #041bcff9;
+    border-radius: 5px;
+    background-color: #ffffff8a;
+    margin-bottom: 4px;
+    padding: 9px;
+    max-width: 500px;
+    margin-left: 39%;
+ 
+}
+
+
+a {
+    color: #007BFF;
+    text-decoration: none;
+}
+
+
+
+
+
+.submit {
+cursor: pointer;
+  border-radius: 5em;
+  color: white;
+  background: linear-gradient(to right, #0547cb, #1968f0);
+  border: 0;
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-bottom: 10px;
+  padding-top: 8px;
+  font-family: 'Ubuntu', sans-serif;
+  margin-left: 2%;
+  font-size: 17px;
+  box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
+  position: fixed;
+}
+a {
+text-shadow: 0px 0px 5px rgba(117, 117, 117, 0.12);
+color: #8a5392;
+text-decoration: none;
+
+}
+.submit:hover {
+background: black;
+}
+.logo img {
+    position: fixed;
+    width: 140px;
+    float:left;
+  margin-left: 90%;
+ cursor: pointer
+}
+button{
+    background-color: #2667e1; 
+    color: #fff;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    
+}
+button:hover{
+   background:linear-gradient(to right, rgb(176, 10, 10), rgb(222, 66, 66));
+}
+
+.visible-text {
+    color: red;
+    visibility: visible;
+}
+
+.hidden-text {
+    visibility: hidden;
+}

@@ -1,0 +1,162 @@
+
+<!DOCTYPE html>
+<html>
+    {%load static%}
+    <head>
+    
+    <title>AdminRecords</title>
+    <link rel="stylesheet" href="{% static 'adrecord.css' %}">
+    
+</head>
+<style>
+    .back-button {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    text-decoration: none;
+    background-color: blue;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    color: white;
+}
+
+.back-button:hover {
+    background-color: red;
+}
+
+h1{
+    color: rgb(56, 86, 236);
+    background: linear-gradient(to right,white, white);
+    margin-left: 20% ;
+    position: fixed;
+   width: 900px;
+   height:180px;
+   margin-top: -5%;
+  
+  
+  }
+  .logo img{
+    margin-top: -5%;
+    width: 180px;
+    height:150px;
+    margin-left: 89%;
+    position: fixed;
+}
+</style>
+
+<body>
+
+    <a href="{% url 'adminpage' %}" class="back-button">Back</a>
+     
+<div class="logo">
+    <img src="{% static 'images/logo.png' %}" alt="Logo">
+</div>
+
+<div class="image">
+    <img src="{% static 'images/doctoradmin.png' %}" alt="logo"  />
+    </div>
+
+<h1><p style="margin-left: 37%;font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; font-size: 45px; margin-top: 3%;"><br>Appointment Records</p></h1>
+
+<div class="title" style="margin-bottom: 8%; margin-left: 30%; margin-top: 5%;">RECORDS</div>
+<ul>
+{% for appointment in appointments %}
+
+<li>
+    <h4  onclick="showDetails('{{ appointment.id }}')"> New Appointment! Click to view details.</h4>
+    <p  onclick="showDetails('{{ appointment.id }}')" class="{% if appointment.approval_message %}visible-text{% else %}hidden-text{% endif %}">
+        {{ appointment.approval_message }}
+    </p>
+    <div class="buttons">
+        <form id="approveForm" method="post" action="{% url 'approve_appointment' appointment.id %}">
+            {% csrf_token %}
+            {{ approval_form.as_p }}
+            <button type="submit" class="approve-button">Approve</button>
+        </form>
+        <div class="cancel">
+            <form id="cancelForm" method="post" action="{% url 'cancel_appointment' appointment.id %}">
+                {% csrf_token %}
+                {{ approval_form.as_p }}
+                <button type="submit" class="cancel-button">Decline</button>
+            </form>
+        </div>
+    </div>
+   
+    <div id="details_{{ appointment.id }}" style="display: none;">
+       
+ <div  onclick="showDetails('{{ appointment.id }}')">
+    <br>
+    <hr>
+    <br>
+ <h3 style="margin-top: 2%;">Patients Details:</h3>
+ <p><strong>Full Name:</strong> {{ appointment.full_name }}</p>
+ <p><strong>Gender:</strong> {{ appointment.gender }}</p>
+ <p><strong>Phone Number:</strong> {{ appointment.phone_number }}</p>
+ <p><strong>Email:</strong> {{ appointment.email }}</p>
+ <p><strong>Address:</strong> {{ appointment.address }}</p>
+ <p><strong>Appointment Date:</strong> {{ appointment.appointment_date }}</p>
+ <p><strong>Appointment Time:</strong> {{ appointment.appointment_time }}</p>
+ <p><strong>Chosen Doctor:</strong> {{ appointment.doctor }}</p>
+
+ <h4>Services:</h4>
+
+ <ul>
+     {% if appointment.Teeth_Extractions %}<p>Teeth Extraction</p>{% endif %}
+     {% if appointment.Dental_Cleaning %}<p>Dental Cleaning</p>{% endif %}
+     {% if appointment.Dental_Crowns %}<p>Dental Crown</p>{% endif %}
+     {% if appointment.Teeth_Whitening %}<p>Teeth Whitening</p>{% endif %}
+     {% if appointment.Cosmetics_Dentistry %}<p>Cosmetics Dentistry</p>{% endif %}
+ </ul>
+</li>
+{% endfor %}
+</ul>
+
+   
+</div>
+   
+</div>
+
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+
+$(document).ready(function () {
+      
+        $("#approveForm, #cancelForm").submit(function (event) {
+            event.preventDefault(); 
+           
+            $.ajax({
+                type: $(this).attr("method"),
+                url: $(this).attr("action"),
+                data: $(this).serialize(),
+                success: function (response) {
+                   
+
+                    sessionStorage.setItem('appointmentUpdated', 'true');
+
+                    window.location.href = '/adminrecords';
+                },
+                error: function (error) {
+                  
+                    console.log("Error:", error);
+                }
+            });
+        });
+    });
+
+
+    function showDetails(appointmentId) {
+        const detailsContainer = document.getElementById('details_' + appointmentId);
+        if (detailsContainer.style.display === 'none') {
+            detailsContainer.style.display = 'block';
+        } else {
+            detailsContainer.style.display = 'none';
+        }
+    }
+
+
+    </script>
+                
+</body>
+</html>

@@ -1,0 +1,153 @@
+
+<!DOCTYPE html>
+<html>
+    {%load static%}
+    <head>
+    
+    <title>AppointmentRecord</title>
+    <link rel="stylesheet" href="{% static 'records.css' %}">
+</head>
+
+<style>
+    .image img{
+    width: 30%;
+    height: 650px ;
+    margin-top: 9%;
+    margin-left: 12%;
+    position: fixed;
+    z-index: 1;
+    
+}
+.back-button {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    text-decoration: none;
+    background-color: blue;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    color: white;
+}
+h2, h3, h4 {
+    color: hsl(211, 100%, 50%);
+    margin-top: 1%;
+    margin-bottom: -4%;
+}
+
+.back-button:hover {
+    background-color: red;
+}
+.logo img{
+    margin-top: 0%;
+    width: 180px;
+    height:150px;
+    margin-left: 88%;
+    position: fixed;
+}
+
+b{
+  color:black;
+  top: 2%;
+}
+
+</style>
+<body>
+
+    
+    <a href="{% url 'userpage' %}" class="back-button">Back</a>
+     
+<div class="logo">
+    <img src="{% static 'images/logo.png' %}" alt="Logo">
+</div>
+<div class="image">
+    <img src="{% static 'images/pic1.png' %}" alt="logo"/>
+</div>
+
+<h1> <p style="margin-left: 30%; font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; font-size: 45px;"><br>Appointment Records</p></h1>
+
+<div class="title" style="margin-bottom: 10%; margin-left: 30%;">RECORDS</div>
+<ul>
+{% for appointment in appointments %}
+
+<li onclick="showDetails('{{ appointment.id }}')">
+    <h4 style="margin-bottom: -1%;">Form submitted successfully and Wait for Approval! Click to view details.</h4>
+    <p style="margin-bottom: .5%;" class="{% if appointment.approval_message %}visible-text{% else %}hidden-text{% endif %}">
+        {{ appointment.approval_message }}
+    </p>
+    <div id="details_{{ appointment.id }}" style="display: none; ">
+    
+<hr>
+<br>
+
+ <h3>Submitted Data:</h3>
+<br>
+ <p><strong>Full Name:</strong> {{ appointment.full_name }}</p>
+ <p><strong>Gender:</strong> {{ appointment.gender }}</p>
+ <p><strong>Phone Number:</strong> {{ appointment.phone_number }}</p>
+ <p><strong>Email:</strong> {{ appointment.email }}</p>
+ <p><strong>Address:</strong> {{ appointment.address }}</p>
+ <p><strong>Appointment Date:</strong> {{ appointment.appointment_date }}</p>
+ <p><strong>Appointment Time:</strong> {{ appointment.appointment_time }}</p>
+ <p><strong>Chosen Doctor:</strong> {{ appointment.doctor }}</p>
+
+ <h4>Services:</h4>
+ <br>
+
+ <ul>
+     {% if appointment.Teeth_Extractions %}<p>Teeth Extraction</p>{% endif %}
+     {% if appointment.Dental_Cleaning %}<p>Dental Cleaning</p>{% endif %}
+     {% if appointment.Dental_Crowns %}<p>Dental Crown</p>{% endif %}
+     {% if appointment.Teeth_Whitening %}<p>Teeth Whitening</p>{% endif %}
+     {% if appointment.Cosmetics_Dentistry %}<p>Cosmetics Dentistry</p>{% endif %}
+ </ul>
+  
+
+               <form method="post" action="{% url 'delete_appointment' appointment.id %}">
+                {% csrf_token %}
+                <button type="button" class="delete-button" onclick="confirmDelete('{{ appointment.name }}', '{{ appointment.id }}')">Delete</button>
+                </form>
+
+            </li>
+            {% endfor %}
+        </ul>
+   
+
+   
+</div>
+    <script>
+            function showDetails(appointmentId) {
+                const detailsContainer = document.getElementById('details_' + appointmentId);
+                if (detailsContainer.style.display === 'none') {
+                    detailsContainer.style.display = 'block';
+                } else {
+                    detailsContainer.style.display = 'none';
+                }
+            }
+
+
+
+        document.addEventListener("DOMContentLoaded", function () {
+            const deleteButtons = document.querySelectorAll(".delete-button");
+    
+            deleteButtons.forEach((button) => {
+                button.addEventListener("click", function (event) {
+                    if (confirm("Are you sure you want to delete this appointment?")) {
+                   
+                        const form = event.target.closest("form");
+                        if (form) {
+                            form.submit(); 
+                        }
+                    } else {
+                       
+                    }
+                });
+            });
+        });
+    </script>
+    
+   
+    
+    
+</body>
+</html>

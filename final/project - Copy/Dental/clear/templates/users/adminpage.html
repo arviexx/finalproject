@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'admin.css' %}">
+    <title>AdminPage</title>
+</head>
+        <style>
+
+    
+
+.content  {
+    font-style: oblique;
+    font-weight: bold;
+    font-size: 30px;
+    color: rgb(12, 12, 232);
+    margin-bottom: 40px;
+margin-left: 54%;
+margin-top: 17%;
+}
+
+.text  {
+  position: fixed;
+  width: 40%;
+  margin-left: -3%;
+  height: 40px;
+  top: 60%;
+  margin-top: 6%;
+    font-family:Arial, Helvetica, sans-serif;
+    font-weight: 600;
+    font-size: 30px;
+    font-style: italic;
+    left: 57%;
+ 
+}
+
+h5{
+  font-family: 'Times New Roman', Times, serif ;
+    display: inline-block;
+    vertical-align: top;
+    margin: 0;
+    color: rgb(11, 10, 10);
+    margin-left: 10%;
+   
+}
+h2{
+
+ font-size: 70px;
+ margin-left: 57%;
+ margin-top: 15%;
+ font-weight: 500;
+ font-style:oblique;
+
+
+}
+h1{
+  font-size: 97px;
+  margin-left: 57%;
+  margin-top:-4%;
+ font-weight: 900%;
+ color: blue;
+
+}
+.navbar {
+    position: fixed; 
+    top: 65px; 
+    left: 70%; 
+   font-weight: bold;
+   font-size: 20px;
+   font-style: italic;
+ font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+        .notification-badge {
+            display: none;
+          background-color: red;
+            color:white;
+        border-radius: 50%;
+            text-align: center;
+            width: 50px;
+             height: 20px; 
+             font-size: 15px; 
+            position: relative;
+            top: -19px;
+            right: 0;
+            margin-right: 0px;
+            z-index: 2;
+        }
+
+        .notification-badge.show {
+            display: inline-block;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="logo">
+        <img src="{% static 'images/logo.png' %}" alt="Logo">
+    </div>
+    <div class="left-frame" style="margin-left: 5%;">
+        <img src="{% static 'images/doc5.jpg' %}" alt="Image">
+    </div>
+    <nav class="navbar">
+        <ul class="navbar-list">
+            <li>
+                <a href="{% url 'adminrecords' %}" id="recordsLink">
+                    Records
+                    <span class="notification-badge" id="notificationBadge"></span>
+                </a>
+            </li>
+            <li><a href="{% url 'index' %}">Log out</a></li>
+        </ul>
+    </nav>
+    <h2>Professional</h2>
+    <b><h1>DENTAL<br> CARE</h1></b>
+    <div class="text">
+        <h5>Creating vibrant smile for a healthy lifestyle.</h5>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+           
+            let badgeValue = localStorage.getItem('badgeValue') || 0;
+
+          
+            const notificationBadge = document.getElementById('notificationBadge');
+            notificationBadge.innerText = badgeValue;
+            notificationBadge.style.display = badgeValue > 0 ? 'inline' : 'none';
+
+           
+            const recordsLink = document.getElementById('recordsLink');
+            recordsLink.addEventListener('click', function () {
+             
+                localStorage.setItem('badgeValue', 0);
+                notificationBadge.style.display = 'none';
+            });
+        });
+    </script>
+</body>
+
+</html>

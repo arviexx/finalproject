@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'userpage.css' %}">
+
+
+    <title>UserPage</title>
+</head>
+        <style>
+.logo img{
+    margin-top: -17%;
+    width: 180px;
+    height:150px;
+    margin-left: 88%;
+    position: fixed;
+
+}
+    
+.content  {
+    font-style: oblique;
+    font-weight: bold;
+    font-size: 30px;
+    color: rgb(12, 12, 232);
+    margin-bottom: 40px;
+margin-left: 54%;
+margin-top: 17%;
+}
+#notificationBadge{
+    position: absolute;
+     top: 10px;
+     width: 10px;
+      height: 10px; 
+      background-color: red;
+       border-radius: 50%; 
+       display: none;
+}
+
+        </style>
+<body>
+
+        
+                <div class="logo">
+                    <img src="{% static 'images/logo.png' %}" alt="Logo">
+                </div>
+            <div class="left-frame" style="margin-left: 5%;">
+                <img src="{% static 'images/frame6.jpg' %}" alt="Image">
+            </div>
+            <nav class="navbar">
+                <ul class="navbar-list">
+                   
+                    <li><a href="{% url 'services' %}">Services</a></li>
+                    <li>
+                        <a href="{% url 'records' %}" id="recordsLink">Records  
+                            <div id="notificationBadge" style="position: fixed; top: 67px; right: 773px; width: 10px; height: 10px; background-color: red; border-radius: 50%; display: none;"></div>
+                        </a>
+                    </li>
+                    <li><a href="{% url 'appointmentforms' %}">Appoint</a></li>
+                    <li><a href="{% url 'doctors' %}">Doctor's Profile</a></li>
+                    <li><a href="{% url 'aboutus' %}">About Us</a></li>
+                    <li><a href="{% url 'index' %}">Log out</a></li>
+
+                </ul>
+                </nav>
+
+                <div class="content">
+                   
+                    <h1 style="margin-top: 3%; margin-left: 10%;">Dental Clinic <br>
+                   that you can <br>Trust!</h1>
+                    <p style="color: rgb(5, 5, 123); font-style: italic; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin-left: 10%;"> Better Teeth. Better Health.</p>
+                </div>
+               
+
+ 
+                <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+                <script>
+                    $(document).ready(function () {
+                        function showNotificationBadge() {
+                            $("#notificationBadge").show();
+                        }
+                
+                        function hideNotificationBadge() {
+                            $("#notificationBadge").hide();
+                        }
+                
+                        if (sessionStorage.getItem('appointmentUpdated') === 'true') {
+                            showNotificationBadge();
+                        }
+                
+                        $(document).on('appointmentUpdated', function () {
+                            showNotificationBadge();
+                        });
+                
+                        $('#recordsLink').on('click', function (e) {
+                            hideNotificationBadge();
+                            
+                         
+                            sessionStorage.setItem('appointmentUpdated', 'false');
+                        });
+                    });
+                </script>
+                
+
+
+                </script>
+    </body>
+    </html>
+    
